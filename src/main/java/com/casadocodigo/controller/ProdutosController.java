@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.casadocodigo.dao.ProdutoDAO;
 import com.casadocodigo.model.Produto;
@@ -26,9 +27,10 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Produto produto) {
+	public String salvar(Produto produto, RedirectAttributes attributes) {
 		produtoDAO.salvar(produto);
-		return "produtos/form";
+		attributes.addFlashAttribute("mensagem", "Produto salvo com sucesso!");
+		return "redirect:produtos";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

@@ -10,6 +10,10 @@
 	<body>
 		<h1>Listagem de produtos</h1>
 		
+		<c:if test="${not empty mensagem}">
+			${mensagem }
+		</c:if>
+		
 		<table>
 			<tr>
 				<td>Titulo</td>
