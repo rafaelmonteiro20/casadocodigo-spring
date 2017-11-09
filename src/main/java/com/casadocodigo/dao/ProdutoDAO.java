@@ -1,5 +1,7 @@
 package com.casadocodigo.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,6 +20,12 @@ public class ProdutoDAO {
 	@Transactional
 	public void salvar(Produto produto) {
 		manager.merge(produto);
+	}
+	
+	@Transactional
+	public List<Produto> listar() {
+		return manager.createQuery("select distinct(p) from Produto p "
+				+ "join fetch p.precos", Produto.class).getResultList();
 	}
 	
 }

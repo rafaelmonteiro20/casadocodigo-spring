@@ -31,4 +31,12 @@ public class ProdutosController {
 		return "produtos/form";
 	}
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("produtos/list");
+		mv.addObject("produtos", produtoDAO.listar());
+		return mv;
+	}
+	
+	
 }
