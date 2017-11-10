@@ -1,7 +1,10 @@
 package com.casadocodigo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,10 +30,16 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Produto produto, RedirectAttributes attributes) {
+	public ModelAndView salvar(@Valid Produto produto, BindingResult bindingResult, 
+		RedirectAttributes attributes) {
+		
+		if(bindingResult.hasErrors()) {
+			return form();
+		}
+		
 		produtoDAO.salvar(produto);
 		attributes.addFlashAttribute("mensagem", "Produto salvo com sucesso!");
-		return "redirect:produtos";
+		return new ModelAndView("redirect:produtos");
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
