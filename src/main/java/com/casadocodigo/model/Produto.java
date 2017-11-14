@@ -1,6 +1,7 @@
 package com.casadocodigo.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 public class Produto {
@@ -28,6 +31,9 @@ public class Produto {
 
 	@Min(30)
 	private Integer paginas;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private Date dataLancamento;
 
 	@ElementCollection
 	@CollectionTable(name = "produto_preco", joinColumns = @JoinColumn(name = "produto_id"))
@@ -64,7 +70,15 @@ public class Produto {
 	public void setPaginas(Integer paginas) {
 		this.paginas = paginas;
 	}
-
+	
+	public Date getDataLancamento() {
+		return dataLancamento;
+	}
+	
+	public void setDataLancamento(Date dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+	
 	public List<Preco> getPrecos() {
 		return precos;
 	}

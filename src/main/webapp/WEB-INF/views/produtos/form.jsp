@@ -39,6 +39,11 @@
 				<input type="text" name="paginas" id="paginas" />
 			</div>
 			
+			<div>
+				<label for="dataLancamento">Data de lançamento</label>
+				<input type="date" name="dataLancamento" id="dataLancamento" />
+			</div>
+			
 			<c:forEach var="tipo" items="${tipos}" varStatus="status">
 				<div>
 					<label for="price_${tipo}">${tipo}</label>
