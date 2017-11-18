@@ -22,10 +22,16 @@ public class ProdutoDAO {
 		manager.merge(produto);
 	}
 	
-	@Transactional
 	public List<Produto> listar() {
 		return manager.createQuery("select distinct(p) from Produto p "
 				+ "join fetch p.precos", Produto.class).getResultList();
+	}
+
+	public Produto buscarPorId(Long id) {
+		return manager.createQuery("select distinct(p) from Produto p "
+				+ "join fetch p.precos where p.id = :id", Produto.class)
+				.setParameter("id", id)
+				.getSingleResult();
 	}
 	
 }

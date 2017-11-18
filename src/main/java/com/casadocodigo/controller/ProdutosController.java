@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,5 +58,12 @@ public class ProdutosController {
 		return mv;
 	}
 	
+	@RequestMapping("/{id}")
+	public ModelAndView show(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("produtos/show");
+		Produto produto = produtoDAO.buscarPorId(id);
+		mv.addObject("produto", produto);
+		return mv;
+	}
 	
 }
