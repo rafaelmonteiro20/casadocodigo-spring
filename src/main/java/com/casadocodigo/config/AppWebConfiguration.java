@@ -1,11 +1,15 @@
 package com.casadocodigo.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -32,6 +36,19 @@ public class AppWebConfiguration {
 		dateFormatter.registerFormatters(conversionService);
 		
 		return conversionService;
+	}
+	
+	@Bean
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource bundle = new ReloadableResourceBundleMessageSource();
+		bundle.setBasename("classpath:/messages");
+		bundle.setDefaultEncoding("UTF-8"); // http://www.utf8-chartable.de/
+		return bundle;
+	}
+	
+	@Bean
+	public MultipartResolver multipartResolver() {
+		return new StandardServletMultipartResolver();
 	}
 
 }

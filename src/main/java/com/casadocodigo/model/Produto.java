@@ -34,6 +34,8 @@ public class Produto {
 	
 	@DateTimeFormat(iso = ISO.DATE)
 	private Date dataLancamento;
+	
+	private String caminhoCapa;
 
 	@ElementCollection
 	@CollectionTable(name = "produto_preco", joinColumns = @JoinColumn(name = "produto_id"))
@@ -77,6 +79,14 @@ public class Produto {
 	
 	public void setDataLancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	}
+	
+	public String getCaminhoCapa() {
+		return caminhoCapa;
+	}
+	
+	public void setCaminhoCapa(String caminhoCapa) {
+		this.caminhoCapa = caminhoCapa;
 	}
 	
 	public List<Preco> getPrecos() {

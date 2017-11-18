@@ -15,13 +15,16 @@
 		<spring:hasBindErrors name="produto">
 			<ul>
 				<c:forEach var="error" items="${errors.allErrors}">
-					<li><spring:message code="${error.code}"
-							text="${error.defaultMessage}" /></li>
+					<li>
+						<spring:message code="${error.code}" text="${error.defaultMessage}" />
+					</li>
 				</c:forEach>
 			</ul>
 		</spring:hasBindErrors>
 	
-		<form:form action="/casadocodigo/produtos" method="post" commandName="produto">
+		<form:form action="/casadocodigo/produtos" method="post" 
+			commandName="produto" enctype="multipart/form-data">
+			
 			<div>
 				<label for="titulo">Titulo</label>
 				<form:input path="titulo" />
@@ -40,6 +43,11 @@
 			<div>
 				<label for="dataLancamento">Data de lançamento</label>
 				<form:input path="dataLancamento" type="date" />
+			</div>
+			
+			<div>
+				<label for="capa">Capa do livro</label>
+				<input type="file" name="capa" id="capa" />
 			</div>
 	
 			<c:forEach var="tipo" items="${tipos}" varStatus="status">
