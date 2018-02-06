@@ -1,9 +1,13 @@
-package com.casadocodigo.config;
+package com.casadocodigo.config.init;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.casadocodigo.config.AppWebConfiguration;
+import com.casadocodigo.config.JpaConfiguration;
+import com.casadocodigo.config.ServiceConfig;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 

@@ -1,4 +1,4 @@
-package com.casadocodigo.storage;
+package com.casadocodigo.infra.storage;
 
 import static java.nio.file.FileSystems.getDefault;
 

@@ -39,7 +39,7 @@ public class JpaConfiguration {
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo?useSSL=false");
 		dataSource.setUsername("root");
-		dataSource.setPassword("1234");
+		dataSource.setPassword("123456");
 		
 		return dataSource;
 	}
@@ -57,9 +57,7 @@ public class JpaConfiguration {
 	
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(emf);
-		return transactionManager;
+		return new JpaTransactionManager(emf);
 	}
 	
 }

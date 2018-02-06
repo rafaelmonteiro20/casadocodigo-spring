@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.casadocodigo.dao.ProdutoDAO;
+import com.casadocodigo.infra.storage.FileSaver;
 import com.casadocodigo.model.Produto;
 import com.casadocodigo.model.TipoLivro;
-import com.casadocodigo.storage.FileSaver;
 
 @Controller
 @RequestMapping("/produtos")

@@ -1,4 +1,4 @@
-package com.casadocodigo.storage;
+package com.casadocodigo.infra.storage;
 
 import org.springframework.web.multipart.MultipartFile;
 
