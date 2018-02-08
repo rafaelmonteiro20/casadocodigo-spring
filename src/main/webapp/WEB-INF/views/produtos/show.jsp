@@ -1,4 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -486,7 +488,8 @@
 						y="19" class="sacola-contador">2</text>
 				</g>
 			 </svg>
-			</a> <a tabindex="2"
+			</a> 
+			<a tabindex="2"
 				class="cabecalhoPrincipal-itemNavegacao cabecalhoPrincipal-mostraCategoriasEBusca"
 				href="#navegacaoCabecalho"> <img
 				class="cabecalhoPrincipal-iconeItemNavegacao"
@@ -504,30 +507,7 @@
 
 
 <main>
-	<p class="destaqueDoCupom">
-		Use o código <strong class="destaqueDoCupom-codigo"></strong> e tenha
-		<strong class="destaqueDoCupom-desconto">10%</strong> de desconto!
-		<button class="destaqueDoCupom-remover" title="Remover banner"
-			onclick="removeDiscountBanner()">
-			<?xml version="1.0" encoding="iso-8859-1"?>
-			<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-				xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				width="15px" height="15px" viewBox="0 0 612 612"
-				style="enable-background: new 0 0 612 612;" xml:space="preserve">
-<g>
-	<path fill="#ffffff"
-					d="M387.128,170.748L306,251.915l-81.128-81.167l-54.124,54.124L251.915,306l-81.128,81.128l54.085,54.086L306,360.086
-		l81.128,81.128l54.086-54.086L360.086,306l81.128-81.128L387.128,170.748z M522.38,89.62
-		c-119.493-119.493-313.267-119.493-432.76,0c-119.493,119.493-119.493,313.267,0,432.76
-		c119.493,119.493,313.267,119.493,432.76,0C641.873,402.888,641.873,209.113,522.38,89.62z M468.295,468.295
-		c-89.62,89.619-234.932,89.619-324.551,0c-89.62-89.62-89.62-234.932,0-324.551c89.62-89.62,234.931-89.62,324.551,0
-		C557.914,233.363,557.914,378.637,468.295,468.295z" />
-</g>
-</svg>
-		</button>
-	</p>
+	
 
 
 
@@ -537,7 +517,7 @@
 			<div class="cabecalhoProdutoLivro-tituloEAutor">
 				<h1 class="cabecalhoProdutoLivro-titulo">
 					<span class="cabecalhoProdutoLivro-titulo-principal" role="presentation">${produto.titulo}</span> 
-					<span class="cabecalhoProdutoLivro-titulo-sub" role="presentation">Interativo, reativo e modularizado</span>
+					<span class="cabecalhoProdutoLivro-titulo-sub" role="presentation">${produto.subtitulo}</span>
 				</h1>
 				<span class="cabecalhoProdutoLivro-nomeAutor">Rodrigo Turini</span>
 			</div>
@@ -673,146 +653,16 @@
 				<dt class="infosAdicionaisDoLivro-info-titulo">Número de páginas:</dt>
 				<dd class="infosAdicionaisDoLivro-info-valor">${produto.paginas}</dd>
 				<dt class="infosAdicionaisDoLivro-info-titulo">Data de lançamento:</dt>
-				<dd class="infosAdicionaisDoLivro-info-valor">${produto.dataLancamento}</dd>
+				<dd class="infosAdicionaisDoLivro-info-valor">
+					<fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento}"/>
+				</dd>
 			</dl>
 		</section>
-
-		<section class="compartilhar infoSection">
-			<h2 class="infoSection-titulo">Compartilhe!</h2>
-			<a class="compartilhar-facebook" href="#" rel="nofollow" title="Compartilhe no Facebook" rel="nofollow"
-				target="_blank">Compartilhe no Facebook</a> 
-			<a class="compartilhar-twitter" rel="nofollow" title="Compartilhe no Twitter" rel="nofollow"
-				target="_blank">Compartilhe no Twitter</a>
-		</section>
 	</article>
-
-	<div class="buscaDoRodape container" role="presentation">
-		<form role="search" aria-labelledby="rotuloBuscaDoRodape"
-			action="/search" method="GET" class="buscaDoRodape-formulario">
-			<label id="rotuloBuscaRodape" class="buscaDoRodape-rotuloEscondido"
-				for="campoBuscaRodape">Busque por autor, título, conteúdo...</label>
-			<label class="buscaDoRodape-rotulo" for="campoBuscaRodape">Não encontrou o seu livro?</label>
-			<fieldset class="buscaDoRodape-fieldset">
-				<input type="hidden" name="type" value="product"> 
-				<input id="campoBuscaRodape" class="buscaDoRodape-campo"
-					placeholder="O que você procura?" type="search" name="q" required aria-required>
-				<button class="buscaDoRodape-enviar" type="submit">Buscar</button>
-			</fieldset>
-		</form>
-	</div>
 </main>
 	
-	<footer class="rodape">
-		<div class="container" role="presentation">
-			<div class="rodape-conteudo" role="presentation">
-				<section class="rodape-secao">
-					<a class="rodape-logo" href="#" title="Voltar ao topo da página">
-						<img src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/logo-footer.svg?12931136276439619480"
-						alt="altLogoFooter" />
-					</a>
-				</section>
-				<section class="rodape-secao rodape-secaoLinks">
-					<h3 class="rodape-titulo">
-						Links da
-						<div role="presentation" class="rodape-titulo-espacador"></div>
-						Casa do Código
-					</h3>
-					<ul>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="/pages/sobre-a-casa-do-codigo"> Sobre a Casa do
-								Código </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="/pages/quero-ser-um-autor"> Quero ser um autor </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="https://feedback.userreport.com/500b990e-9d86-4af5-ad72-3be3151b8dc0/"
-							target="_blank"> Quero ler um livro sobre... </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="mailto:contato@casadocodigo.com.br"> Contato </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://suporte.casadocodigo.com.br"> Perguntas
-								frequentes </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://forum.casadocodigo.com.br"> Fórum de
-								discussões </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://www.caelum.com.br" target="_blank"> Caelum
-								Ensino e Inovação </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://www.galandra.com.br" target="_blank"> Galandra -
-								Reforce seu inglês </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://livros.casadocodigo.com.br" rel="nofollow">
-								Meus E-books </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="http://www.codecrushing.com" rel="nofollow"> Code
-								Crushing </a></li>
-
-						<li class="rodape-item"><a class="rodape-itemLink"
-							href="/pages/politica-de-privacidade" rel="nofollow">
-								Política de Privacidade </a></li>
-
-					</ul>
-				</section>
-				<!--
-
-		 -->
-				<section class="rodape-secao rodape-secaoOutros">
-					<h3 class="rodape-titulo">Receba as novidades, promoções e
-						lançamentos</h3>
-					<form class="rodape-formularioDaNewsletter"
-						action="https://docs.google.com/forms/d/e/1FAIpQLSfLN8GYzRsSSdXVofZZkx-L7mXZVv0CrtJRhI2qKzf8sqVT2g/formResponse"
-						method="POST">
-						<input type="hidden" name="pageNumber" value="0"> <input
-							type="hidden" name="backupCache" value=""> <input
-							class="rodape-campoDaNewsletter" type="email"
-							name="entry.1000000" value="" id="entry_0"
-							placeholder="seu@email.com">
-						<!--
-				 -->
-						<button class="rodape-botaoDaNewsletter" type="submit"
-							name="submit" id="submit-newsletter">ok</button>
-					</form>
-
-					<h3 class="rodape-titulo rodape-tituloSecundario">Este site
-						aceita</h3>
-					<ul>
-						<li class="rodape-formaDePagamento"><img
-							src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/pagseguro.png?12931136276439619480"
-							border="0" alt="pag seguro" /></li>
-						<li class="rodape-formaDePagamento"><img
-							src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/paypal.png?12931136276439619480"
-							border="0" alt="paypal" /></li>
-					</ul>
-
-					<h3 class="rodape-titulo rodape-tituloSecundario">Nas redes
-						sociais</h3>
-					<ul>
-						<li class="rodape-item rodape-redeSocial"><a
-							class="compartilhar-facebook"
-							href="http://www.facebook.com/casadocodigo" rel="nofollow"
-							title="Casa do Código no Facebook" rel="nofollow" target="_blank">/CasaDoCodigo</a>
-						</li>
-						<li class="rodape-item rodape-redeSocial"><a
-							class="compartilhar-twitter"
-							href="http://www.twitter.com/casadocodigo" rel="nofollow"
-							title="Casa do Código no Twitter" rel="nofollow" target="_blank">@casadocodigo</a>
-						</li>
-					</ul>
-				</section>
-			</div>
-		</div>
-	</footer>
-	<footer class="caelum-footer">
+	
+	<footer class="caelum-footer" style="margin-top: 50px">
 		<div class="grupoCaelum">
 			<div class="container">
 				<p class="grupoCaelum-title">

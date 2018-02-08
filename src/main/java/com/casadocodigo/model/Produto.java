@@ -26,7 +26,11 @@ public class Produto {
 
 	@NotBlank
 	private String titulo;
+	
+	@NotBlank
+	private String subtitulo;
 
+	@NotBlank
 	private String descricao;
 
 	@Min(30)
@@ -55,6 +59,14 @@ public class Produto {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	public String getSubtitulo() {
+		return subtitulo;
+	}
+	
+	public void setSubtitulo(String subtitulo) {
+		this.subtitulo = subtitulo;
 	}
 
 	public String getDescricao() {

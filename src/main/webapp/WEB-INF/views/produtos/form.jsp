@@ -31,6 +31,11 @@
 			</div>
 	
 			<div>
+				<label for="subtitulo">Subtítulo</label>
+				<form:input path="subtitulo" />
+			</div>
+			
+			<div>
 				<label for="descricao">Descricao</label>
 				<form:textarea path="descricao" rows="10" cols="20" />
 			</div>
