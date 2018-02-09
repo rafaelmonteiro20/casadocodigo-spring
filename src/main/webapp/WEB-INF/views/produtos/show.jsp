@@ -485,7 +485,7 @@
 					<circle cy="14.681157" cx="13.148581" r="9" role="presentation"
 						fill="#FFF" />
 					<text text-decoration="none" text-anchor="middle" x="13.148581"
-						y="19" class="sacola-contador">2</text>
+						y="19" class="sacola-contador">${carrinhoCompras.quantidade}</text>
 				</g>
 			 </svg>
 			</a> 
@@ -589,7 +589,7 @@
 
 
 
-		<form action="/cart/add" method="POST" class="adicionarAoCarrinho">
+		<form action="/casadocodigo/carrinho/adicionar" method="POST" class="adicionarAoCarrinho">
 			<input type="hidden" name="produtoID" value="${produto.id}" />
 			
 			<ul class="adicionarAoCarrinho-listaOfertas">
@@ -612,7 +612,8 @@
 							</p>
 						</label>
 
-						<button class="adicionarAoCarrinho-botaoComprar" type="submit" title="Compre agora">
+						<button class="adicionarAoCarrinho-botaoComprar" type="submit" title="Compre agora"
+							name="tipoLivro" value="${preco.tipoLivro}">
 							Comprar
 						</button>
 					</li>

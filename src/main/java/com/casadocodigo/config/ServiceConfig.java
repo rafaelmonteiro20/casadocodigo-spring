@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.casadocodigo.infra.storage.FileSaver;
 import com.casadocodigo.infra.storage.FileSaverLocal;
-import com.casadocodigo.service.ShoppingCard;
+import com.casadocodigo.service.CarrinhoCompras;
 
 @Configuration
-@ComponentScan(basePackageClasses = ShoppingCard.class)
+@ComponentScan(basePackageClasses = CarrinhoCompras.class)
 public class ServiceConfig {
 
 	@Bean
