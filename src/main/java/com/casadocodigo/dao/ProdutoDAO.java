@@ -27,15 +27,10 @@ public class ProdutoDAO {
 				+ "join fetch p.precos", Produto.class).getResultList();
 	}
 	
-	public Produto buscarProdutoComPrecos(Long id) {
-		return manager.createQuery("select distinct(p) from Produto p "
-					+ "join fetch p.precos where p.id = :id", Produto.class)
-				.setParameter("id", id)
-				.getSingleResult();
-	}
-
-	public Produto buscarPorId(Long id) {
-		return manager.find(Produto.class, id);
+	public Produto buscarPorId(Long produtoID) {
+		return manager.createQuery("select p from Produto p join fetch p.precos where p.id = :id", Produto.class)
+					  .setParameter("id", produtoID)
+					  .getSingleResult();
 	}
 	
 }

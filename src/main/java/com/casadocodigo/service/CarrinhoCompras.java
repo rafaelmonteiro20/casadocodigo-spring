@@ -37,4 +37,14 @@ public class CarrinhoCompras {
 		return item.getTotal(getQuantidade(item));
 	}
 	
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		
+		for(CarrinhoItem item :  itens.keySet()) {
+			total = total.add(item.getTotal(getQuantidade(item)));
+		}
+		
+		return total;
+	}
+	
 }

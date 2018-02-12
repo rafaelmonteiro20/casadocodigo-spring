@@ -26,7 +26,7 @@ public class CarrinhoItem {
 	}
 	
 	public BigDecimal getTotal(int quantidade) {
-		return null;
+		return getPreco().multiply(new BigDecimal(quantidade));
 	}
 	
 	public String getDescricao() {

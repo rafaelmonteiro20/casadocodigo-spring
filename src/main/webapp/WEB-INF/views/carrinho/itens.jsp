@@ -471,12 +471,12 @@
 							<td class="formularioDoCarrinho-item">
 								<h2 class="formularioDoCarrinho-item-titulo">${item.descricao}</h2>
 							</td>
-							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">R$ </td>
+							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">${item.preco}</td>
 							<td class="formularioDoCarrinho-item">
 								<input class="formularioDoCarrinho-item-quantidade" type="number"  min="0"
 									   id="updates_3845180929" name="updates[3845180929]" value="${carrinhoCompras.getQuantidade(item)}">
 							</td>
-							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal" title="Preço unitário: R$69,90">R$69,90</td>
+							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal">${carrinhoCompras.getTotal(item)}</td>
 							<td class="formularioDoCarrinho-item">
 								<a href="/cart/change?id=3845180929&quantity=0">
 									<img class="formularioDoCarrinho-item-remover-imagem"  src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/trash.png?6587815016992574778" alt="X" title="Remover">
@@ -489,13 +489,15 @@
 					<tfoot class="formularioDoCarrinho-rodape">
 						<tr>
 							<td class="formularioDoCarrinho-rodape-item formularioDoCarrinho-finalizar" colspan="3">
-								<button class="formularioDoCarrinho-finalizar-botao" type="submit" name="checkout">Finalizar<span class="formularioDoCarrinho-finalizar-botao-texto" role="presentation"> compra</span></button>
+								<button class="formularioDoCarrinho-finalizar-botao" type="submit" name="checkout">
+									Finalizar<span class="formularioDoCarrinho-finalizar-botao-texto" role="presentation"> compra</span>
+								</button>
 							</td>
 							<td class="formularioDoCarrinho-rodape-item">
 								<button class="formularioDoCarrinho-atualizar" type="submit" class="update-cart" name="update">Atualizar</button>
 							</td>
 							<td class="formularioDoCarrinho-rodape-item">
-								R$139,80
+								${carrinhoCompras.total}
 							</td>
 							<td></td>
 						</tr>
