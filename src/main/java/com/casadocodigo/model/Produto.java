@@ -46,6 +46,15 @@ public class Produto {
 	@CollectionTable(name = "produto_preco", joinColumns = @JoinColumn(name = "produto_id"))
 	private List<Preco> precos = new ArrayList<>();
 
+	
+	public Produto() {
+
+	}
+	
+	public Produto(Long produtoID) {
+		this.id = produtoID;
+	}
+
 	public Long getId() {
 		return id;
 	}

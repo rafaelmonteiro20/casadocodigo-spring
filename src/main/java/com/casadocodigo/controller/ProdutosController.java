@@ -59,8 +59,8 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping("/{id}")
-	public ModelAndView show(@PathVariable("id") Long id) {
-		ModelAndView mv = new ModelAndView("produtos/show");
+	public ModelAndView detalhes(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("produtos/detalhes");
 		mv.addObject("produto", produtoDAO.buscarPorId(id));
 		return mv;
 	}

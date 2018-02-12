@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.casadocodigo.model.CarrinhoItem;
+import com.casadocodigo.model.Produto;
+import com.casadocodigo.model.TipoLivro;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION)
@@ -45,6 +47,10 @@ public class CarrinhoCompras {
 		}
 		
 		return total;
+	}
+
+	public void remover(Long produtoID, TipoLivro tipoLivro) {
+		itens.remove(new CarrinhoItem(new Produto(produtoID), tipoLivro));
 	}
 	
 }

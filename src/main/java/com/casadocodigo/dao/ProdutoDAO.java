@@ -33,4 +33,15 @@ public class ProdutoDAO {
 					  .getSingleResult();
 	}
 	
+	public List<Produto> ultimosLancamentos() {
+		return manager.createQuery("from Produto where dataLancamento <= now() order by id desc", Produto.class)
+				.setMaxResults(5)
+				.getResultList();
+	}
+	
+	public List<Produto> produtosMaisAntigos() {
+		return manager.createQuery("from Produto", Produto.class)
+				.getResultList();
+	}
+	
 }

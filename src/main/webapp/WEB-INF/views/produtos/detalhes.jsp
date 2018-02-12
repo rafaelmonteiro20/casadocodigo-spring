@@ -750,14 +750,7 @@
 
 	</footer>
 
-	<script type="text/javascript"
-		src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/trackExternalLinks.js?12931136276439619480"></script>
-
-	<script type="text/javascript"
-		src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/userreport.js?12931136276439619480"></script>
-	<script type="text/javascript"
-		src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/discount.js?12931136276439619480"></script>
-	<script type="text/javascript"
-		src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/menu.js?12931136276439619480"></script>
+	<script type="text/javascript" src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/discount.js?12931136276439619480"></script>
+	<script type="text/javascript" src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/menu.js?12931136276439619480"></script>
 </body>
 </html>

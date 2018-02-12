@@ -1,15 +1,24 @@
 package com.casadocodigo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.casadocodigo.dao.ProdutoDAO;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	private ProdutoDAO produtoDAO;
+	
 	@RequestMapping("/home")
-	public String home() {
-		System.out.println("Deu certo!");
-		return "home";
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView("home");
+		mv.addObject("ultimosLancamentos", produtoDAO.ultimosLancamentos());
+		mv.addObject("produtos", produtoDAO.produtosMaisAntigos());
+		return mv;
 	}
 	
 }
