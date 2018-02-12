@@ -91,7 +91,38 @@
 			height:40px;
 			min-height:40px
 		}
-		.additional-checkout-button--google-pay .short{width:160px}.additional-checkout-button--google-pay:focus{-webkit-box-shadow:0 1px 3px 0 #6d6d6d, inset 0 0 0 1px #a8abb3;box-shadow:0 1px 3px 0 #6d6d6d, inset 0 0 0 1px #a8abb3}.additional-checkout-button--google-pay:hover:enabled{background-color:#f7f7f7}.additional-checkout-button--google-pay:active:enabled{background-color:#e7e8e8}.additional-checkout-button--google-pay .no-shadow{-webkit-box-shadow:inset 0 0 0 1px #dadce0;box-shadow:inset 0 0 0 1px #dadce0}.additional-checkout-button--google-pay .no-shadow:focus{-webkit-box-shadow:inset 0 0 0 1px #a8abb3;box-shadow:inset 0 0 0 1px #a8abb3}.additional-checkout-button--google-pay:disabled::before{content:&#39;&#39;;width:100%;height:100%;display:block;background-color:rgba(255,255,255,0.5)}.additional-checkout-button--paypal-express{background-color:#ffc439 !important}.additional-checkout-button--paypal{vertical-align:top;line-height:0 !important;padding:0 !important}.additional-checkout-button--amazon{background-color:#fad676 !important;position:relative !important}.additional-checkout-button--amazon .additional-checkout-button__logo{-webkit-transform:translateY(4px) !important;transform:translateY(4px) !important}.additional-checkout-button--amazon .alt-payment-list-amazon-button-image{max-height:none !important;opacity:0 !important;position:absolute !important;top:0 !important;left:0 !important;width:100% !important;height:100% !important}.additional-checkout-button-visually-hidden{border:0 !important;clip:rect(0, 0, 0, 0) !important;clip:rect(0 0 0 0) !important;width:1px !important;height:1px !important;margin:-2px !important;overflow:hidden !important;padding:0 !important;position:absolute !important}
+		.additional-checkout-button--google-pay .short {
+			width:160px
+		}
+		.additional-checkout-button--google-pay:focus {
+			-webkit-box-shadow:0 1px 3px 0 #6d6d6d, inset 0 0 0 1px #a8abb3;
+			box-shadow:0 1px 3px 0 #6d6d6d, inset 0 0 0 1px #a8abb3
+		}
+		.additional-checkout-button--google-pay:hover:enabled {	
+			background-color:#f7f7f7
+		}
+		.additional-checkout-button--google-pay:active:enabled {
+			background-color:#e7e8e8
+		}
+		.additional-checkout-button--google-pay .no-shadow {
+			-webkit-box-shadow:inset 0 0 0 1px #dadce0;
+			box-shadow:inset 0 0 0 1px #dadce0
+		}
+		.additional-checkout-button--google-pay .no-shadow:focus {
+			-webkit-box-shadow:inset 0 0 0 1px #a8abb3;
+			box-shadow:inset 0 0 0 1px #a8abb3
+		}
+		.additional-checkout-button--google-pay:disabled::before {
+			content:&#39;&#39;;
+			width:100%;
+			height:100%;
+			display:block;
+			background-color:rgba(255,255,255,0.5)
+		}
+		.additional-checkout-button--paypal-express {
+			background-color:#ffc439 !important
+		}
+		.additional-checkout-button--paypal{vertical-align:top;line-height:0 !important;padding:0 !important}.additional-checkout-button--amazon{background-color:#fad676 !important;position:relative !important}.additional-checkout-button--amazon .additional-checkout-button__logo{-webkit-transform:translateY(4px) !important;transform:translateY(4px) !important}.additional-checkout-button--amazon .alt-payment-list-amazon-button-image{max-height:none !important;opacity:0 !important;position:absolute !important;top:0 !important;left:0 !important;width:100% !important;height:100% !important}.additional-checkout-button-visually-hidden{border:0 !important;clip:rect(0, 0, 0, 0) !important;clip:rect(0 0 0 0) !important;width:1px !important;height:1px !important;margin:-2px !important;overflow:hidden !important;padding:0 !important;position:absolute !important}
 	</style>
 </head>
 
@@ -430,19 +461,20 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="item" items="${carrinhoCompras.itens}">
 						<tr>
 							<td class="formularioDoCarrinho-item">
-								<a href="/products/livro-plsql">
+								<a href='<c:url value="/produtos/${item.produto.id}" />'>
 									<img class="formularioDoCarrinho-item-imagem" src="//cdn.shopify.com/s/files/1/0155/7645/products/plsql-featured_small.png?v=1434740236" />
 								</a>
 							</td>
 							<td class="formularioDoCarrinho-item">
-								<h2 class="formularioDoCarrinho-item-titulo">PL/SQL: Domine a linguagem do banco de dados Oracle - Impresso</h2>
+								<h2 class="formularioDoCarrinho-item-titulo">${item.descricao}</h2>
 							</td>
-							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">R$69,90</td>
+							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">R$ </td>
 							<td class="formularioDoCarrinho-item">
 								<input class="formularioDoCarrinho-item-quantidade" type="number"  min="0"
-									   id="updates_3845180929" name="updates[3845180929]" value="1">
+									   id="updates_3845180929" name="updates[3845180929]" value="${carrinhoCompras.getQuantidade(item)}">
 							</td>
 							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal" title="Preço unitário: R$69,90">R$69,90</td>
 							<td class="formularioDoCarrinho-item">
@@ -451,6 +483,7 @@
 								</a>
 							</td>
 						</tr>
+						</c:forEach>
 					</tbody>
 		
 					<tfoot class="formularioDoCarrinho-rodape">

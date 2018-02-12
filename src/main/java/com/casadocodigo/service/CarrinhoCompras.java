@@ -1,5 +1,7 @@
 package com.casadocodigo.service;
 
+import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -18,13 +20,21 @@ public class CarrinhoCompras {
 	public void adicionar(CarrinhoItem item) {
 		itens.put(item, getQuantidade(item) + 1);
 	}
+	
+	public Collection<CarrinhoItem> getItens() {
+		return itens.keySet();
+	}
 
-	private int getQuantidade(CarrinhoItem item) {
+	public int getQuantidade(CarrinhoItem item) {
 		return itens.getOrDefault(item, 0);
 	}
 
 	public int getQuantidade() {
 		return itens.values().stream().reduce(0, (proximo, acumulador) -> proximo + acumulador);
+	}
+	
+	public BigDecimal getTotal(CarrinhoItem item) {
+		return item.getTotal(getQuantidade(item));
 	}
 	
 }

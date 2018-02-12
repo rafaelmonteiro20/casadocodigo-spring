@@ -1,5 +1,6 @@
 package com.casadocodigo.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,6 +110,11 @@ public class Produto {
 		this.precos = precos;
 	}
 
+	public BigDecimal precoPara(TipoLivro tipoLivro) {
+		return precos.stream().filter(p -> p.getTipoLivro().equals(tipoLivro))
+					 .findFirst().get().getValor();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
