@@ -31,6 +31,11 @@ public class CarrinhoComprasController {
 		carrinho.adicionar(item);
 		return new ModelAndView("redirect:/produtos");
 	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView itens() {
+		return new ModelAndView("carrinho/itens");
+	}
 
 	private CarrinhoItem criarItem(Long produtoId, TipoLivro tipoLivro) {
 		Produto produto = produtoDAO.buscarPorId(produtoId);
