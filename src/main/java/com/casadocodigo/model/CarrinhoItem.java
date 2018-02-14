@@ -21,6 +21,10 @@ public class CarrinhoItem {
 		return tipoLivro;
 	}
 	
+	public Long getProdutoID() {
+		return produto.getId();
+	}
+	
 	public BigDecimal getPreco() {
 		return produto.precoPara(tipoLivro);
 	}
