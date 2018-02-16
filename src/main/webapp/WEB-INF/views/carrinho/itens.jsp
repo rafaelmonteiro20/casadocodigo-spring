@@ -478,7 +478,12 @@
 							</td>
 							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal">${carrinhoCompras.getTotal(item)}</td>
 							<td class="formularioDoCarrinho-item">
-								<a href="#">
+								<c:url value="/carrinho/remover" var="url">
+									<c:param name="produtoID" value="${item.produtoID}" />
+									<c:param name="tipoLivro" value="${item.tipoLivro}" />
+								</c:url>
+							
+								<a href="${url}">
 									<img class="formularioDoCarrinho-item-remover-imagem"  src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/trash.png?6587815016992574778" alt="X" title="Remover">
 								</a>
 							</td>

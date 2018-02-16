@@ -16,6 +16,10 @@ public class PagamentoController {
 	
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
 	public ModelAndView finalizar() {
+		
+		
+		
+		
 		return new ModelAndView("redirect:/produtos");
 	}
 	

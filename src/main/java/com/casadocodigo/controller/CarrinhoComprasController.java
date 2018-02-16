@@ -25,6 +25,11 @@ public class CarrinhoComprasController {
 	@Autowired
 	private CarrinhoCompras carrinho;
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView itens() {
+		return new ModelAndView("carrinho/itens");
+	}
+	
 	@RequestMapping(value = "/adicionar", method = RequestMethod.POST)
 	public ModelAndView adicionarProduto(Long produtoID, TipoLivro tipoLivro) {
 		CarrinhoItem item = criarItem(produtoID, tipoLivro);
@@ -32,9 +37,10 @@ public class CarrinhoComprasController {
 		return new ModelAndView("redirect:/carrinho");
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView itens() {
-		return new ModelAndView("carrinho/itens");
+	@RequestMapping(value = "/remover", method = RequestMethod.GET)
+	public ModelAndView remover(Long produtoID, TipoLivro tipoLivro) {
+		carrinho.remover(new CarrinhoItem(new Produto(produtoID), tipoLivro));
+		return new ModelAndView("redirect:/carrinho");
 	}
 
 	private CarrinhoItem criarItem(Long produtoId, TipoLivro tipoLivro) {
