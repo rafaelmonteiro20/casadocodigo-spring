@@ -1,5 +1,7 @@
 package com.casadocodigo.controller;
 
+import java.util.concurrent.Callable;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,25 +39,27 @@ public class PagamentoController {
 	}
 	
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
-	public ModelAndView finalizar(@Valid UsuarioSistema usuarioSistema, BindingResult result) {
-		if(result.hasErrors()) {
-			return pagamento(usuarioSistema);
-		}
+	public Callable<ModelAndView> finalizar(@Valid UsuarioSistema usuarioSistema, BindingResult result) {
+		return () -> {
+			if(result.hasErrors()) {
+				return pagamento(usuarioSistema);
+			}
 		
-		String uri = "http://book-payment.herokuapp.com/payment";
-		
-		try {
-			String resposta = template.postForObject(uri, 
-					new DadosPagamento(carrinho.getTotal()), String.class);
+			String uri = "http://book-payment.herokuapp.com/payment";
 			
-			System.out.println("Usuário: " + usuarioSistema);
-			System.out.println("Total:" + carrinho.getTotal());
-			System.out.println("Resposta: " + resposta);
-
-			return new ModelAndView("redirect:/home");
-		} catch (HttpClientErrorException e) {
-			return new ModelAndView("redirect:/pagamento");
-		}
+			try {
+				String resposta = template.postForObject(uri, 
+						new DadosPagamento(carrinho.getTotal()), String.class);
+				
+				System.out.println("Usuário: " + usuarioSistema);
+				System.out.println("Total:" + carrinho.getTotal());
+				System.out.println("Resposta: " + resposta);
+	
+				return new ModelAndView("redirect:/home");
+			} catch (HttpClientErrorException e) {
+				return new ModelAndView("redirect:/pagamento");
+			}
+		};
 	}
 	
 }
