@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR" dir="ltr" class="no-js windows chrome desktop page--no-banner page--logo-main page--show page--show card-fields">
@@ -16,9 +17,7 @@
 
  	<link rel="stylesheet" media="all" href="//cdn.shopify.com/app/services/1557645/assets/352452628/checkout_stylesheet/v2-ltr-edge-984ee445a5a9308b52b2ad960e70adc4-5478003938689806681" />
 
-
 	<script src="//cdn.shopify.com/s/assets/checkout-af29626ac70530f71ce376768e0287a752d0f21d6846ee7c5770503c88d4edb7.js"></script>
-    <script src="//www.paypalobjects.com/api/checkout.min.js" async="async"></script>
 </head>
 
 <body>
@@ -194,112 +193,93 @@
 		</div>
 	
     	<div class="main__content">
-			<div class="step" data-step="contact_information">
-  				<div class="step__sections">
-					<div class="section section--contact-information">
-  						<div class="section__header">
-    						<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
-      							<h2 class="section__title layout-flex__item layout-flex__item--stretch">Informações de contato</h2>
-    						</div>
-  						</div>
-  						<div class="section__content" data-section="customer-information" data-shopify-pay-validate-on-load="false">
-        					<div class="fieldset">
-          						<div class="field field--required">
-            						<label class="field__label" for="checkout_email">E-mail</label>
-            						<div class="field__input-wrapper">
-              							<input placeholder="E-mail" spellcheck="false" autocomplete="shipping email" data-autofocus="true" 
-              								data-backup="customer_email" class="field__input" aria-required="true" size="30" 
-              								type="email" name="checkout[email]" id="checkout_email" />
-            						</div>
-								</div>
-							</div> 
+    		<form:form action="/casadocodigo/pagamento/finalizar" method="post" commandName="usuarioSistema">
+				<div class="section section--contact-information">
+  					<div class="section__header">
+    					<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
+      						<h2 class="section__title layout-flex__item layout-flex__item--stretch">Informações de contato</h2>
+    					</div>
+  					</div>
+  					<div class="section__content" data-section="customer-information">
+        				<div class="fieldset">
+          					<div class="field field--required">
+            					<label class="field__label" for="email">E-mail</label>
+            					<div class="field__input-wrapper">
+              						<input id="email" name="email" type="email" placeholder="E-mail"
+              							class="field__input" />
+            					</div>
+							</div>
 						</div> 
 					</div> 
+				</div> 
 
-					<div class="section section--shipping-address" data-shipping-address data-update-order-summary>
-						<div class="section__header">
-      						<h2 class="section__title">Endereço para entrega</h2>
-    					</div>
+				<div class="section section--shipping-address" data-shipping-address data-update-order-summary>
+					<div class="section__header">
+      					<h2 class="section__title">Endereço para entrega</h2>
+    				</div>
 
-   	 					<div class="section__content">
-     	 					<div class="fieldset" data-address-fields>
-								<div class="field--half field field--optional" data-address-field="first_name">
-  									<label class="field__label" for="checkout_shipping_address_first_name">Nome</label>
-  									<div class="field__input-wrapper">
-    									<input placeholder="Nome" autocomplete="shipping given-name" data-backup="first_name" 
-    										class="field__input" size="30" type="text" name="checkout[shipping_address][first_name]" 
-    										id="checkout_shipping_address_first_name" />
-  									</div>
-								</div>
-								
-								<div class="field--half field field--required" data-address-field="last_name">
-									<label class="field__label" for="checkout_shipping_address_last_name">Sobrenome</label>
-									<div class="field__input-wrapper">
-									    <input placeholder="Sobrenome" autocomplete="shipping family-name" data-backup="last_name" 
-									    	class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][last_name]" 
-									    	id="checkout_shipping_address_last_name" />
-									 </div>
-								</div>
+   	 				<div class="section__content">
+     	 				<div class="fieldset">
+							<div class="field field--required">
+  								<label class="field__label" for="nome">Nome</label>
+  								<div class="field__input-wrapper">
+    								<input type="text" id="nome" name="nome" placeholder="Nome" class="field__input" />
+  								</div>
+							</div>
   
-								<div data-address-field="company" class="field field--required">
-								    <label class="field__label" for="checkout_shipping_address_company">CPF/CNPJ</label>
-								    <div class="field__input-wrapper">
-								      <input placeholder="CPF/CNPJ" autocomplete="shipping organization" data-backup="company" 
-								      	class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][company]" 
-								      	id="checkout_shipping_address_company" />
-								    </div>
+							<div class="field--half field field--required">
+								<label class="field__label" for="cpf">CPF</label>
+								<div class="field__input-wrapper">
+									<input type="text" id="cpf" name="cpf" placeholder="CPF" class="field__input" />
 								</div>
-								
-								<div class="field field--required" data-address-field="address1" data-google-places="true">
-									<label class="field__label" for="checkout_shipping_address_address1">Endereço (com número)</label>
-									<div class="field__input-wrapper">
-										<input placeholder="Endereço (com número)" autocomplete="shipping address-line1" autocorrect="off" 
-											data-backup="address1" data-google-autocomplete="true" data-google-autocomplete-title="Sugestões" 
-											class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][address1]" 
-											id="checkout_shipping_address_address1" />
-									</div>
+							</div>
+							
+							<div class="field--half field field--optional">
+								<label class="field__label" for="telefone">Telefone</label>
+								<div class="field__input-wrapper">
+									<input type="tel" id="telefone" name="telefone" placeholder="Telefone"
+										class="field__input field__input--numeric" /> 
 								</div>
+							</div>
+							
+							<div class="field field--required">
+								<label class="field__label" for="endereco">Endereço (com número)</label>
+								<div class="field__input-wrapper">
+									<input id="endereco" type="text" name="endereco.endereco" 
+										placeholder="Endereço (com número)" class="field__input" />
+								</div>
+							</div>
 
-								<div data-address-field="city" data-google-places="true" class="field field--required">
-									<label class="field__label" for="checkout_shipping_address_city">Cidade</label>
-									<div class="field__input-wrapper">
-										<input placeholder="Cidade" autocomplete="shipping address-level2" autocorrect="off" data-backup="city" 
-											class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]" 
-											id="checkout_shipping_address_city" />
-									</div>
+							<div class="field field--required">
+								<label class="field__label" for="cidade">Cidade</label>
+								<div class="field__input-wrapper">
+									<input type="text" id="cidade" name="endereco.cidade"
+										placeholder="Cidade" class="field__input" />
 								</div>
+							</div>
 								
-								<div class="field--three-eights field field--required" data-address-field="province" data-google-places="true">
-									<label class="field__label" for="checkout_shipping_address_province">Estado</label>
-								  	<div class="field__input-wrapper field__input-wrapper--select">
-								    	<input placeholder="Estado" autocomplete="shipping address-level1" data-backup="province" 
-								    		class="field__input" aria-required="true" type="text" name="checkout[shipping_address][province]" 
-								    		id="checkout_shipping_address_province" />
-								  	</div>
+							<div class="field--half field field--required">
+								<label class="field__label" for="estado">Estado</label>
+								<div class="field__input-wrapper field__input-wrapper--select">
+									<select class="field__input" id="estado" name="endereco.estado">
+										<option value="">Selecione</option>
+										<c:forEach var="estado" items="${estados}">
+											<option value="${estado}">${estado.descricao}</option>
+										</c:forEach>
+									</select> 	
 								</div>
+							</div>
 								
-								<div class="field--quarter field field--required" data-address-field="zip" data-google-places="true">
-									<label class="field__label" for="checkout_shipping_address_zip"> CEP</label>
-								  	<div class="field__input-wrapper">
-								    	<input placeholder="22290175" autocomplete="shipping postal-code" data-backup="zip" data-google-autocomplete="true" 
-								    		data-google-autocomplete-title="SugestÃµes" class="field__input field__input--zip" aria-required="true" 
-								    		size="30" type="text" name="checkout[shipping_address][zip]" id="checkout_shipping_address_zip" />
-								  	</div>
+							<div class="field--half field field--required">
+								<label class="field__label" for="cep">CEP</label>
+								<div class="field__input-wrapper">
+									<input type="text" id="cep" name="endereco.cep" 
+										placeholder="CEP" class="field__input field__input--zip" />
 								</div>
-								
-								<div data-address-field="phone" class="field field--hidden">
-								    <label class="field__label" for="checkout_shipping_address_phone">Telefone</label>
-								    <div class="field__input-wrapper">
-								    	<input placeholder="Telefone" autocomplete="shipping tel" data-backup="phone" data-phone-formatter="true" 
-								    		data-phone-formatter-country-select="[name=&#39;checkout[shipping_address][country]&#39;]" 
-								    		class="field__input field__input--numeric" size="30" type="tel" name="checkout[shipping_address][phone]" 
-								    		id="checkout_shipping_address_phone" />
-								    </div>
-								</div>
-  							</div>     
-  						</div>   
-  					</div> 
-  				</div>
+							</div>
+  						</div>     
+  					</div>   
+  				</div> 
 
 				<div class="step__footer" data-step-footer>
   					<button name="button" type="submit" class="step__footer__continue-btn btn " aria-busy="false">
@@ -315,7 +295,8 @@
   						<span class="step__footer__previous-link-content">Voltar ao carrinho</span>
   					</a>
 				</div>
-			</div>
+			
+			</form:form>
          </div>
          <div class="main__footer">
 			<div role="contentinfo" aria-label="Rodapé">
