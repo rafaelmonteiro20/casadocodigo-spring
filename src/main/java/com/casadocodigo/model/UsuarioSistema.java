@@ -1,15 +1,18 @@
 package com.casadocodigo.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
@@ -27,12 +30,23 @@ public class UsuarioSistema {
 	@NotBlank
 	private String nome;
 	
+	@CPF
 	private String cpf;
 	
 	private String telefone;
 	
-	@Embedded
-	private Endereco endereco = new Endereco();
+	@NotBlank
+	private String endereco;
+	
+	@NotBlank
+	private String cidade;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
+	
+	@NotBlank
+	private String cep;
 	
 	@Column(unique = true)
 	private String login;
@@ -80,12 +94,36 @@ public class UsuarioSistema {
 		this.telefone = telefone;
 	}
 
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return endereco;
 	}
-	
-	public void setEndereco(Endereco endereco) {
+
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getLogin() {

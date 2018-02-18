@@ -1,6 +1,9 @@
 package com.casadocodigo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +23,10 @@ public class PagamentoController {
 	}
 	
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
-	public ModelAndView finalizar(UsuarioSistema usuarioSistema) {
+	public ModelAndView finalizar(@Valid UsuarioSistema usuarioSistema, BindingResult result) {
+		if(result.hasErrors()) {
+			return pagamento(usuarioSistema);
+		}
 		
 		System.out.println("Recebendo dados:");
 		System.out.println(usuarioSistema);
