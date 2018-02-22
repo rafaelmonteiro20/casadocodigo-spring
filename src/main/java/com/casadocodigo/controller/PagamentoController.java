@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.casadocodigo.model.DadosPagamento;
 import com.casadocodigo.model.Estado;
-import com.casadocodigo.model.UsuarioSistema;
+import com.casadocodigo.model.Cliente;
 import com.casadocodigo.service.CarrinhoCompras;
 
 @Controller
@@ -32,17 +32,17 @@ public class PagamentoController {
 	private RestTemplate template;
 	
 	@RequestMapping
-	public ModelAndView pagamento(UsuarioSistema usuarioSistema) {
+	public ModelAndView pagamento(Cliente cliente) {
 		ModelAndView mv = new ModelAndView("/pagamento");
 		mv.addObject("estados", Estado.values());
 		return mv;
 	}
 	
 	@RequestMapping(value = "/finalizar", method = RequestMethod.POST)
-	public Callable<ModelAndView> finalizar(@Valid UsuarioSistema usuarioSistema, BindingResult result) {
+	public Callable<ModelAndView> finalizar(@Valid Cliente cliente, BindingResult result) {
 		return () -> {
 			if(result.hasErrors()) {
-				return pagamento(usuarioSistema);
+				return pagamento(cliente);
 			}
 		
 			String uri = "http://book-payment.herokuapp.com/payment";
@@ -51,7 +51,7 @@ public class PagamentoController {
 				String resposta = template.postForObject(uri, 
 						new DadosPagamento(carrinho.getTotal()), String.class);
 				
-				System.out.println("Usuário: " + usuarioSistema);
+				System.out.println("Cliente: " + cliente);
 				System.out.println("Total:" + carrinho.getTotal());
 				System.out.println("Resposta: " + resposta);
 	

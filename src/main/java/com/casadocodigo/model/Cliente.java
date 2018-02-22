@@ -1,6 +1,5 @@
 package com.casadocodigo.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,8 +15,8 @@ import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
-@Table(name = "usuario_sistema")
-public class UsuarioSistema {
+@Table(name = "cliente")
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,11 +47,6 @@ public class UsuarioSistema {
 	@NotBlank
 	private String cep;
 	
-	@Column(unique = true)
-	private String login;
-	
-	private String senha;
-
 	
 	public Long getId() {
 		return id;
@@ -126,22 +120,6 @@ public class UsuarioSistema {
 		this.cep = cep;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	@Override
 	public String toString() {
 		return "UsuarioSistema [" + id + ", " + email + ", " + nome + "]";
@@ -163,7 +141,7 @@ public class UsuarioSistema {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UsuarioSistema other = (UsuarioSistema) obj;
+		Cliente other = (Cliente) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

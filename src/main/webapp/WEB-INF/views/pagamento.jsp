@@ -193,9 +193,9 @@
 		</div>
 	
     	<div class="main__content">
-    		<form:form action="/casadocodigo/pagamento/finalizar" method="post" commandName="usuarioSistema">
+    		<form:form action="/casadocodigo/pagamento/finalizar" method="post" commandName="cliente">
     		
-    			<c:set var="errors" value="${requestScope['org.springframework.validation.BindingResult.usuarioSistema']}" />
+    			<c:set var="errors" value="${requestScope['org.springframework.validation.BindingResult.cliente']}" />
     		
 				<div class="section section--contact-information">
   					<div class="section__header">
@@ -208,7 +208,7 @@
           					<div class="field field--required ${errors.hasFieldErrors('email') ? 'field--error' : ''}">
             					<label class="field__label" for="email">E-mail</label>
             					<div class="field__input-wrapper">
-              						<input id="email" name="email" type="email" value="${usuarioSistema.email}"
+              						<input id="email" name="email" type="email" value="${cliente.email}"
               							placeholder="E-mail" class="field__input" />
               						<form:errors path="email" cssClass="field__message field__message--error" />
             					</div>
@@ -227,7 +227,7 @@
 							<div class="field field--required ${errors.hasFieldErrors('nome') ? 'field--error' : ''}">
   								<label class="field__label" for="nome">Nome</label>
   								<div class="field__input-wrapper">
-    								<input type="text" id="nome" name="nome" value="${usuarioSistema.nome}"
+    								<input type="text" id="nome" name="nome" value="${cliente.nome}"
     									placeholder="Nome" class="field__input" />
     								<form:errors path="nome" cssClass="field__message field__message--error" />
   								</div>
@@ -236,7 +236,7 @@
 							<div class="field--half field field--required ${errors.hasFieldErrors('cpf') ? 'field--error' : ''}">
 								<label class="field__label" for="cpf">CPF</label>
 								<div class="field__input-wrapper">
-									<input type="text" id="cpf" name="cpf" value="${usuarioSistema.cpf}"
+									<input type="text" id="cpf" name="cpf" value="${cliente.cpf}"
 										placeholder="CPF" class="field__input" />
 									<form:errors path="cpf" cssClass="field__message field__message--error" />
 								</div>
@@ -245,7 +245,7 @@
 							<div class="field--half field field--optional">
 								<label class="field__label" for="telefone">Telefone</label>
 								<div class="field__input-wrapper">
-									<input type="tel" id="telefone" name="telefone" value="${usuarioSistema.telefone}"
+									<input type="tel" id="telefone" name="telefone" value="${cliente.telefone}"
 										placeholder="Telefone" class="field__input field__input--numeric" />
 									<form:errors path="telefone" cssClass="field__message field__message--error" />
 								</div>
@@ -254,7 +254,7 @@
 							<div class="field field--required ${errors.hasFieldErrors('endereco') ? 'field--error' : ''}">
 								<label class="field__label" for="endereco">Endereço (com número)</label>
 								<div class="field__input-wrapper">
-									<input id="endereco" type="text" name="endereco" value="${usuarioSistema.endereco}"
+									<input id="endereco" type="text" name="endereco" value="${cliente.endereco}"
 										placeholder="Endereço (com número)" class="field__input" />
 									<form:errors path="endereco" cssClass="field__message field__message--error" />
 								</div>
@@ -263,7 +263,7 @@
 							<div class="field field--required ${errors.hasFieldErrors('cidade') ? 'field--error' : ''}">
 								<label class="field__label" for="cidade">Cidade</label>
 								<div class="field__input-wrapper">
-									<input type="text" id="cidade" name="cidade" value="${usuarioSistema.cidade}"
+									<input type="text" id="cidade" name="cidade" value="${cliente.cidade}"
 										placeholder="Cidade" class="field__input" />
 									<form:errors path="cidade" cssClass="field__message field__message--error" />
 								</div>
@@ -275,7 +275,7 @@
 									<select class="field__input" id="estado" name="estado">
 										<option value="">Selecione</option>
 										<c:forEach var="estado" items="${estados}">
-											<option value="${estado}" ${estado eq usuarioSistema.estado ? 'selected="selected"' : ''}">
+											<option value="${estado}" ${estado eq cliente.estado ? 'selected="selected"' : ''}">
 												${estado.descricao}
 											</option>
 										</c:forEach>
@@ -287,7 +287,7 @@
 							<div class="field--half field field--required ${errors.hasFieldErrors('cep') ? 'field--error' : ''}">
 								<label class="field__label" for="cep">CEP</label>
 								<div class="field__input-wrapper">
-									<input type="text" id="cep" name="cep" value="${usuarioSistema.cep}"
+									<input type="text" id="cep" name="cep" value="${cliente.cep}"
 										placeholder="CEP" class="field__input field__input--zip" />
 									<form:errors path="cep" cssClass="field__message field__message--error" />
 								</div>
