@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -448,7 +449,7 @@
 		<section class="infoSection container">
 			<h2 class="infoSection-titulo">Seu carrinho</h2>
 	
-			<form class="formularioDoCarrinho" action="/carrinho" method="post">
+			<form class="formularioDoCarrinho" action='<c:url value="/carrinho"/>' method="post">
 				<table class="formularioDoCarrinho-tabela">
 					<thead class="formularioDoCarrinho-cabecalho">
 						<tr>
@@ -474,7 +475,7 @@
 							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">${item.preco}</td>
 							<td class="formularioDoCarrinho-item">
 								<input class="formularioDoCarrinho-item-quantidade" type="number"  min="0"
-									   id="updates_3845180929" name="updates[3845180929]" value="${carrinhoCompras.getQuantidade(item)}">
+									   id="alteracoes_${item.produtoID}" name="alteracoes[${item.produtoID}]" value="${carrinhoCompras.getQuantidade(item)}">
 							</td>
 							<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal">${carrinhoCompras.getTotal(item)}</td>
 							<td class="formularioDoCarrinho-item">
@@ -494,12 +495,12 @@
 					<tfoot class="formularioDoCarrinho-rodape">
 						<tr>
 							<td class="formularioDoCarrinho-rodape-item formularioDoCarrinho-finalizar" colspan="3">
-								<button class="formularioDoCarrinho-finalizar-botao" type="submit" name="checkout">
+								<button class="formularioDoCarrinho-finalizar-botao" type="submit" name="acao" value="pagamento">
 									Finalizar<span class="formularioDoCarrinho-finalizar-botao-texto" role="presentation"> compra</span>
 								</button>
 							</td>
 							<td class="formularioDoCarrinho-rodape-item">
-								<button class="formularioDoCarrinho-atualizar" type="submit" class="update-cart" name="update">Atualizar</button>
+								<button class="formularioDoCarrinho-atualizar" type="submit" class="update-cart" name="acao" value="atualizar">Atualizar</button>
 							</td>
 							<td class="formularioDoCarrinho-rodape-item">
 								${carrinhoCompras.total}

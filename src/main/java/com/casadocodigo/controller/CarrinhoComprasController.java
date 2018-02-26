@@ -30,6 +30,15 @@ public class CarrinhoComprasController {
 		return new ModelAndView("carrinho/itens");
 	}
 	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView atualizar(String acao) {
+		
+		if("pagamento".equals(acao))
+			return new ModelAndView("redirect:/pagamento");
+		
+		return new ModelAndView("redirect:/carrinho");
+	}
+	
 	@RequestMapping(value = "/adicionar", method = RequestMethod.POST)
 	public ModelAndView adicionarProduto(Long produtoID, TipoLivro tipoLivro) {
 		CarrinhoItem item = criarItem(produtoID, tipoLivro);
