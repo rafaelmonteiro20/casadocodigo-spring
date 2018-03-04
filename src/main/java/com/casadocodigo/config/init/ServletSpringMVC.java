@@ -7,13 +7,14 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.casadocodigo.config.AppWebConfiguration;
 import com.casadocodigo.config.JpaConfiguration;
+import com.casadocodigo.config.SecurityConfiguration;
 import com.casadocodigo.config.ServiceConfig;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] { SecurityConfiguration.class };
 	}
 
 	@Override
