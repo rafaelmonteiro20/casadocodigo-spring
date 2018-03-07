@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -449,7 +451,7 @@
 		<section class="infoSection container">
 			<h2 class="infoSection-titulo">Seu carrinho</h2>
 	
-			<form class="formularioDoCarrinho" action='<c:url value="/carrinho"/>' method="post">
+			<form:form servletRelativeAction="/carrinho" cssClass="formularioDoCarrinho">
 				<table class="formularioDoCarrinho-tabela">
 					<thead class="formularioDoCarrinho-cabecalho">
 						<tr>
@@ -509,7 +511,7 @@
 						</tr>
 					</tfoot>
 				</table>
-			</form>
+			</form:form>
 		</section>
 	</main>
 	

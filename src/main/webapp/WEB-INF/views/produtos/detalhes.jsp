@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -591,6 +592,7 @@
 
 		<form action="/casadocodigo/carrinho/adicionar" method="POST" class="adicionarAoCarrinho">
 			<input type="hidden" name="produtoID" value="${produto.id}" />
+			<security:csrfInput />
 			
 			<ul class="adicionarAoCarrinho-listaOfertas">
 				<c:forEach var="preco" items="${produto.precos}">
