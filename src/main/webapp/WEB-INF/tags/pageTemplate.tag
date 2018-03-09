@@ -1,10 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ attribute name="extraJS" fragment="true" %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -170,5 +167,7 @@
 	
 	<script type="text/javascript" src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/discount.js?6587815016992574778"></script>
 	<script type="text/javascript" src="//cdn.shopify.com/s/files/1/0155/7645/t/229/assets/menu.js?6587815016992574778"></script>
+	
+	<jsp:invoke fragment="extraJS" />
 </body>
 </html>
